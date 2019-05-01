@@ -4,15 +4,15 @@ node {
          container('jnlp')
      {
      
-     stage('Install custom softwares') {
+    // stage('Install custom softwares') {
      
-     sh "apk add jq && jq --version"
-     sh "pwd"
-     sh "apk add curl"
-     sh "curl --version"
-     sh "apk add py-pip"
+   //  sh "apk add jq && jq --version"
+   //  sh "pwd"
+    // sh "apk add curl"
+    // sh "curl --version"
+    // sh "apk add py-pip"
      
-     }
+    // }
      
      stage('Git Checkout') {
      

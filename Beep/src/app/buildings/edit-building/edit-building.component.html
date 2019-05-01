@@ -1,0 +1,47 @@
+<div class="row justify-content-center" *ngIf="building">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header">
+        <h3 class="text-primary text-center">Edit Building</h3>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control" value="{{building.description}}" placeholder="Enter Description" />
+        </div>
+        <div class="form-group">
+          <label>Square Feet</label>
+          <input type="text" class="form-control" value="{{building.sqFeet}}" placeholder="Enter Square Feet" />
+        </div>
+
+        <div class="form-group">
+          <label>Address Line1</label>
+          <input type="text" class="form-control" value="{{building.address.addressLine1}}" placeholder="Enter Address Line1" />
+        </div>
+        <div class="form-group">
+          <label>Address Line2</label>
+          <input type="text" class="form-control" value="{{building.address.addressLine2}}" placeholder="Enter Address Line2" />
+        </div>
+        <div class="row">
+          <div class="form-group col-md-4 d-inline">
+            <label>City</label>
+            <input type="text" class="form-control" value="{{building.address.city}}" placeholder="Enter City" />
+          </div>
+          <div class="form-group col-md-4 d-inline">
+            <label>State</label>
+            <input type="text" class="form-control" value="{{building.address.state}}" placeholder="Enter State" />
+          </div>
+          <div class="form-group col-md-4 d-inline">
+            <label>Zip</label>
+            <input type="text" class="form-control" value="{{building.address.zipCode}}" placeholder="Enter Zip" />
+          </div>
+        </div>
+        <div class="form-group mt-3">
+          <button class="btn btn-block btn-success" (click)="onSubmit()">Submit</button>
+          <a routerLink="/building-detail/{{buildingId}}" class="btn btn-block btn-link">Cancel</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</div>

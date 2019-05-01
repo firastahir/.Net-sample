@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/spec",
+    "types": [],
+    "lib": [
+      "es2018",
+      "dom"
+    ]
+  },
+  "files": [
+    "test.ts",
+    "polyfills.ts"
+  ]
+}

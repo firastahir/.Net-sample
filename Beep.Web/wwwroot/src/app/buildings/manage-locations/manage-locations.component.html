@@ -1,0 +1,48 @@
+<div class="card rounded-top" *ngIf="building">
+    <div class="card-header bg-secondary text-white">
+        <div class="row d-flex justify-content-between">
+            <h3 class="p-2">
+                {{building.name}}
+            </h3>
+            <small class="float-right p-2 pt-1">
+                <a routerLink="/buildings" [queryParams]="{returnUrl:'manage-locations'}" class="btn btn-sm btn-light text-primary">Switch Building <i class="fa fa-chevron-right"></i></a>
+            </small>
+        </div>
+    </div>
+    <div class="card-header bg-transparent border-bottom-0">
+        <building-info [showEditLink]="false"></building-info>
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-center">
+
+            <div class="card col-md-5 p-0">
+                <div class="card-header bg-success text-white">
+                    <strong>Manage Locations</strong>
+                    <a class="btn btn-light text-success btn-sm float-right" routerLink="/add-locations/{{building.buildingId}}"><i class="fa fa-plus-circle"> </i> Add Locations</a>
+                </div>
+                <div class="card-body text-center" *ngIf="locations">
+                    <div class="border-top border-bottom pt-1 pb-1" *ngFor="let l of locations; index as i">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="customCheck{{i}}" (change)="selectLocation(l)">
+                            <label class="custom-control-label font-weight-normal w-100" for="customCheck{{i}}">
+                                {{l.addressLine1}}
+                                {{l.addressLine2}}
+                                {{l.city}}
+                                {{l.state}}
+                                {{l.zipCode}}
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-4">
+                        <button class="btn btn-danger btn-block" [disabled]="!selectedLocations.length" (click)="openModal()">Delete</button>
+                        <a routerLink="/building-detail/{{building.buildingId}}" class="btn btn-link">Cancel</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+

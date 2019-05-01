@@ -1,0 +1,73 @@
+<div class="card rounded-top" *ngIf="building">
+    <div class="card-header bg-secondary text-white">
+        <div class="row d-flex justify-content-between">
+            <h3 class="p-2">
+                {{building.name}}
+            </h3>
+            <small class="float-right p-2 text-right pt-1">
+                <a routerLink="/buildings" class="btn btn-sm btn-light text-primary">
+                    Switch Building <i class="fa fa-chevron-right"></i>
+                </a>
+            </small>
+        </div>
+    </div>
+    <div class="card-header bg-transparent border-bottom-0">
+        <building-info [showEditLink]="true"></building-info>
+    </div>
+    <div class="card-body pt-0">
+        <div class="card-deck">
+            <div class="card rounded-top">
+                <div class="card-header bg-success text-white">
+                    <strong>
+                        Locations
+                    </strong>
+                    <div class="float-right">
+                        <a routerLink="/manage-locations/{{building.buildingId}}" class="btn btn-sm btn-light text-success float-right"><i class="fa fa-edit"></i> Manage Locations</a>
+
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-sm table-hover">
+                        <tbody>
+                            <tr *ngFor="let l of building.premiseList">
+                                <td class="text-center">
+                                    <div>
+                                        <ul class="list-inline list-unstyled">
+                                            <li class="list-inline-item">
+                                                {{l.addressLine1}}
+                                            </li>
+                                            <li *ngIf="l.addressLine2" class="list-inline-item">
+                                                {{l.addressLine2}}
+                                            </li>
+                                            <li class="list-inline-item">
+                                                {{l.city}}
+                                            </li>
+                                            <li class="list-inline-item">
+                                                {{l.state}}
+                                            </li>
+                                            <li class="list-inline-item">
+                                                {{l.zipCode}}
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+            <manage-locations *ngIf="editLocations"></manage-locations>
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <Strong>Benchmark Data</Strong>
+                </div>
+
+                <div class="card-body border-bottom-0">
+                    <a routerLink="/benchmark-export/{{building.buildingId}}" class="btn btn-lg btn-primary btn-block"><i class="fa fa-upload"></i> Export to Energy Star</a>
+                    <a routerLink="/benchmark-download/{{building.buildingId}}" class="btn btn-lg btn-primary btn-block"><i class="fa fa-download"></i> View Usage Data</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

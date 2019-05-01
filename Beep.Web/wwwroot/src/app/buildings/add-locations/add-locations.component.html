@@ -1,0 +1,156 @@
+<div class="card rounded-top" *ngIf="building">
+    <div class="card-header bg-secondary text-white">
+        <div class="row d-flex justify-content-between">
+            <h3 class="p-2">
+                {{building.name}}
+            </h3>
+            <small class="float-right pt-1">
+                <a routerLink="/buildings" [queryParams]="{returnUrl:'add-locations'}" class="btn btn-sm btn-light text-primary">Switch Building <i class="fa fa-chevron-right"></i></a>
+            </small>
+        </div>
+    </div>
+    <div class="card-header bg-transparent border-bottom-0 ">
+        <building-info [showEditLink]="false"></building-info>
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="card rounded-top col-md-12 p-0">
+                <div class="card-header bg-success text-white">
+                    <strong>Add Locations</strong>
+                    <a class="btn btn-danger btn-sm float-right" routerLink="/manage-locations/{{building.buildingId}}"><i class="fa fa-times-circle"></i> Cancel</a>
+                </div>
+                <div class="card rounded-top">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header text-white bg-secondary">
+                                        <strong>Search</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Search By Address </a>
+                                            </li>
+                                            <li class="navbar-text border-left ml-2 mr-2 border-dark">
+
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Search By MeterID</a>
+                                            </li>
+                                        </ul>
+                                        <div class="tab-content" id="pills-tabContent">
+                                            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+
+                                                <div>
+                                                    <label>Street Address</label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" [(ngModel)]="address" placeholder="Enter Street Address">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-success" (click)="searchByAddress(address)" type="submit"><i class="fa fa-search"></i> Search</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="border-top border-bottom pt-1 pb-1" *ngFor="let l of locationsByAddress; index as i">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="customCheck{{i}}" (change)="selectLocation(l)" [checked]="isChecked(l)">
+                                                        <label class="custom-control-label font-weight-normal col-md-12" for="customCheck{{i}}">
+                                                            {{l.addressLine1}}
+                                                            {{l.addressLine2}}
+                                                            {{l.city}}
+                                                            {{l.state}}
+                                                            {{l.zipCode}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                                                <div>
+                                                    <label>Meter ID</label>
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" class="form-control" [(ngModel)]="meterID" placeholder="Enter Meter ID">
+                                                        <div class="input-group-append">
+                                                            <button class="btn btn-success" (click)="searchByMeterID()" type="submit"><i class="fa fa-search"></i> Search</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--<div class="border-top border-bottom pt-1 pb-1" *ngFor="let l of locationsByMeter; index as i">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="meterLocation{{i}}" (change)="selectLocation(l)" [checked]="isChecked(l)">
+                                                        <label class="custom-control-label font-weight-normal col-md-12" for="meterLocation{{i}}">
+
+                                                        </label>
+                                                    </div>
+                                                </div>-->
+                                                <div class="border-top border-bottom pt-1 pb-1" *ngIf="locationsByMeter">
+                                                    <div class="custom-control custom-checkbox">
+                                                        <input type="checkbox" class="custom-control-input" id="meterLocation" (change)="selectLocation(locationsByMeter)" [checked]="isChecked(locationsByMeter)">
+                                                        <label class="custom-control-label font-weight-normal col-md-12" for="meterLocation">
+                                                            {{locationsByMeter.addressLine1}}
+                                                            {{locationsByMeter.addressLine2}}
+                                                            {{locationsByMeter.city}}
+                                                            {{locationsByMeter.state}}
+                                                            {{locationsByMeter.zipCode}}
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card" *ngIf="selectedLocations.length">
+                                    <div class="card-header bg-secondary text-white">
+                                        <strong>Selected Locations</strong>
+                                    </div>
+                                    <div class="card-body">
+                                        <div *ngFor="let s of selectedLocations">
+                                            <div class="row border-bottom">
+                                                <div class="col-md-9 p-1">
+                                                    <ul class="list-inline m-0">
+                                                        <li class="list-inline-item">
+                                                            {{s.addressLine1}}
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            {{s.addressLine2}}
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            {{s.city}}
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            {{s.state}}
+                                                        </li>
+                                                        <li class="list-inline-item">
+                                                            {{s.zipCode}}
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-md-3 p-0">
+                                                    <button class="btn btn-danger btn-sm mt-1 mb-1" (click)="removeLocation(s)"><i class="fa fa-trash"></i> Remove</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12 text-center pt-3">
+                                            <button (click)="submitLocations()" class="btn btn-success">Submit</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Tab panes -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

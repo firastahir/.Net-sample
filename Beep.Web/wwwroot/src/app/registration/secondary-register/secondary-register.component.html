@@ -1,0 +1,75 @@
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>Registration</h3>
+            </div>
+
+            <div class="card-body">
+                <div class="form-group" *ngIf="currentUserType != Role.Non">
+                    <label>Are you here to Benchmark your property or just obtain aggregate data?</label>
+                    <div class="custom-control custom-radio">
+                        <input class="custom-control-input" type="radio" id="benchmark" name="isBenchmark" (click)="selectUserType('benchmark')">
+                        <label for="benchmark" class="custom-control-label font-weight-normal">Benchmark property</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input class="custom-control-input" type="radio" id="nonBenchmark" name="isBenchmark" (click)="selectUserType('nonBenchmark')">
+                        <label for="nonBenchmark" class="custom-control-label font-weight-normal">Obtain aggregate data</label>
+                    </div>
+                    <div class="form-group mt-3" *ngIf="registrationType && registrationType == 'nonBenchmark'">
+                        <button class="btn btn-primary btn-block" (click)="onContinue()">Continue</button>
+                    </div>
+                </div>
+                <div class="form-group" *ngIf="registrationType && registrationType == 'benchmark'">
+                    <label>Are you an existing Energy Star user?</label>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="hasID" name="isExisting" class="custom-control-input" (click)="selectEPM('true')">
+                        <label class="custom-control-label font-weight-normal" for="hasID">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input type="radio" id="newID" name="isExisting" class="custom-control-input" (click)="selectEPM('false')">
+                        <label class="custom-control-label font-weight-normal" for="newID">No</label>
+                    </div>
+                </div>
+
+                <div *ngIf="hasExistingID && registrationType == 'benchmark'">
+                    <form [formGroup]="newEpmForm" (ngSubmit)="onContinue()">
+                        <div *ngIf="hasExistingID == 'false'">
+                            <div class="form-group">
+                                <label for="epmName">Energy Star User Name</label>
+                                <input type="text" class="form-control" formControlName="userName" />
+                                <div invalidmessageFor="userName" class="text-danger">
+                                    <p *invalidType="'required'">
+                                        Please provide an User Name.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" formControlName="password" />
+                                <div invalidmessageFor="password" class="text-danger">
+                                    <p *invalidType="'required'">Password is required</p>
+                                    <p *invalidType="'minlength'">Password must be at least 8 characters.</p>
+                                    <p *invalidType="'pattern'">Must include a number, a letter and a special character (e.g. @!#).</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Confirm Password</label>
+                                <input type="password" class="form-control" formControlName="confirmPassword" />
+                                <div invalidmessageFor="confirmPassword" class="text-danger">
+                                    <p *invalidType="'required'">Confirm Password is required</p>
+                                    <div *ngIf="newEpmForm.get('confirmPassword').errors.ConfirmPassword && newEpmForm.get('confirmPassword').value != ''">
+                                        <p>Passwords must match</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button class="btn btn-primary btn-block" type="submit">Continue</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="col-md-12 shadow">
+  <div class="row mb-n4">
+    <div class="col-md-3">
+      <a class="navbar-brand" routerLink="">
+        <img class="img-responsive" src="../../../Content//images/corporateLogo.gif" />
+      </a>
+    </div>
+    <div class="col-md-6 d-none d-md-block d-lg-block">
+      <h2 class="text-center text-info">Benchmarking Energy Efficiency Portal</h2>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+
+    <nav class="navbar navbar-expand-md navbar-light bg-lignt border-bottom">
+      <div class="navbar-collapse collapse justify-content-center order-2" id="collapsingNavbar">
+        <div class="">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" routerLink=""><i class="d-md-none d-lg-none fa fa-home"></i> Home</a>
+            </li>
+            <li class="nav-item" *ngIf="isLogin">
+              <a class="nav-link" routerLink="buildings"><i class="d-md-none d-lg-none fa fa-building"></i> Manage Buildings</a>
+            </li>
+            <li class="nav-item" *ngIf="isLogin">
+              <a class="nav-link" routerLink="benchmark"><i class="d-md-none d-lg-none fa fa-pie-chart"></i> Manage Benchmarks</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="faq"><i class="d-md-none d-lg-none fa fa-question"></i> FAQ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="contact"><i class="d-md-none d-lg-none fa fa-envelope"></i> Contact</a>
+            </li>
+            <li class="nav-item" *ngIf="isLogin">
+              <a class="nav-link" routerLink="manage-profile"><i class="d-md-none d-lg-none fa fa-key"></i> Manage Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="login">Login/Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="d-md-none d-lg-none">
+        <h2 class="text-center text-info">BEEP</h2>
+      </div>
+      <div class="ml-auto">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,41 @@
+<h3 class="text-primary text-center">Buildings</h3>
+<div class="text-right mb-1">
+  <a routerLink="/add-building" class="btn btn-sm btn-primary"><i class="fa fa-plus-circle"></i> Add Building</a>
+</div>
+<div class="list-group-flush">
+  <a routerLink="/building-detail/{{b.buildingID}}" class="list-group-item list-group-item-action" *ngFor="let b of buildings">
+    <div class="d-flex justify-content-between">
+      <h5 class="mb-1">{{b.description}}</h5>
+      <span class="badge badge-secondary">{{b.sqFeet}} Sqft</span>
+    </div>
+    <div class="row mb-n3">
+      <div class="col-md-6">
+        <ul class="list-inline">
+          <li class="list-inline-item"><label>Building ID:</label></li>
+          <li class="list-inline-item">{{b.buildingID}}</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-inline">
+          <li class="list-inline-item"><label>Building Type:</label></li>
+          <li class="list-inline-item">{{b.buildingType}}</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <ul class="list-inline m-0 p-0">
+        <li class="list-inline-item"><label>Address:</label></li>
+        <li class="list-inline-item">{{b.address.addressLine1}}</li>
+        <li class="list-inline-item" *ngIf="b.address.addressLine2">{{b.address.addressLine2}}</li>
+        <li class="list-inline-item">{{b.address.city}}</li>
+        <li class="list-inline-item">{{b.address.state}}</li>
+        <li class="list-inline-item">{{b.address.zipCode}}</li>
+      </ul>
+    </div>
+  </a>
+</div>
+
+
+
+
+

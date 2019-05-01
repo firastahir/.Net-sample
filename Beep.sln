@@ -1,0 +1,62 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beep.Web", "Beep.Web\Beep.Web.csproj", "{EB76BEC1-490C-42E2-A597-532E47C2BFC7}"
+	ProjectSection(ProjectDependencies) = postProject
+		{168C1333-E946-4201-A27D-82A32735173B} = {168C1333-E946-4201-A27D-82A32735173B}
+		{7F35FBEF-C325-4446-AA58-02E2BD929B0A} = {7F35FBEF-C325-4446-AA58-02E2BD929B0A}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beep.DataModels", "Beep.DataModels\Beep.DataModels.csproj", "{7F35FBEF-C325-4446-AA58-02E2BD929B0A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Beep.APIClient", "Beep.APIClient\Beep.APIClient.csproj", "{168C1333-E946-4201-A27D-82A32735173B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{160FCADB-0BC3-401E-8C16-234190912DEE}"
+	ProjectSection(SolutionItems) = preProject
+		.Dockerignore = .Dockerignore
+		Dockerfile = Dockerfile
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EB76BEC1-490C-42E2-A597-532E47C2BFC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB76BEC1-490C-42E2-A597-532E47C2BFC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB76BEC1-490C-42E2-A597-532E47C2BFC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB76BEC1-490C-42E2-A597-532E47C2BFC7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7F35FBEF-C325-4446-AA58-02E2BD929B0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7F35FBEF-C325-4446-AA58-02E2BD929B0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7F35FBEF-C325-4446-AA58-02E2BD929B0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7F35FBEF-C325-4446-AA58-02E2BD929B0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{168C1333-E946-4201-A27D-82A32735173B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{168C1333-E946-4201-A27D-82A32735173B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{168C1333-E946-4201-A27D-82A32735173B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{168C1333-E946-4201-A27D-82A32735173B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EFF3342F-8661-4AE2-825F-825037D06263}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 4
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://gobntpvtfs:8080/tfs/energydel%20-%20web
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Beep.Web\\Beep.Web.csproj
+		SccProjectName1 = Beep.Web
+		SccLocalPath1 = Beep.Web
+		SccProjectUniqueName2 = Beep.DataModels\\Beep.DataModels.csproj
+		SccProjectName2 = Beep.DataModels
+		SccLocalPath2 = Beep.DataModels
+		SccProjectUniqueName3 = Beep.APIClient\\Beep.APIClient.csproj
+		SccProjectName3 = Beep.APIClient
+		SccLocalPath3 = Beep.APIClient
+	EndGlobalSection
+EndGlobal

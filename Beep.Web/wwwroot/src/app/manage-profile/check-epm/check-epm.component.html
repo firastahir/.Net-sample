@@ -1,0 +1,26 @@
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-secondary text-center text-white">
+                <h3 *ngIf="isBenchmarker">
+                    Status: Enrolled
+                </h3>
+                <h3 *ngIf="isBenchmarker">
+                    Status: Not Verified
+                </h3>
+                <h3 *ngIf="!isBenchmarker">
+                    Status: Not Enrolled
+                </h3>
+            </div>
+            <div class="card-body">
+                <label *ngIf="isBenchmarker">EnergyStar ID: <small>test</small></label>
+                
+                <div class="form-group text-center">
+                    <a class="btn btn-success form-control text-white" *ngIf="!isBenchmarker" routerLink="/registration-continue">Enroll</a>
+                    <button class="btn btn-success form-control text-white" *ngIf="isBenchmarker">Verify Energy Star</button>
+                    <a routerLink="/manage-profile" class="btn btn-link">Cancel</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Building ID</th>
+      <th>Building Name</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let b of buildings">
+    <tr>
+      <td>
+        {{b.ID}}
+      </td>
+      <td>
+        {{b.Building}}
+      </td>
+    </tr>
+  </tbody>
+</table>

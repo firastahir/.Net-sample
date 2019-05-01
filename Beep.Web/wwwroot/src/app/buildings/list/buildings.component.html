@@ -1,0 +1,115 @@
+<div class="card">
+    <div class="card-header bg-secondary text-white">
+        <div class="row d-flex justify-content-between">
+            <h3 class="p-2">
+                Buildings
+            </h3>
+            <small class="float-right p-2 text-right pt-1">
+                <a routerLink="/add-building" class="btn btn-sm btn-light text-primary"><i class="fa fa-plus-circle"></i> Add Building</a>
+            </small>
+        </div>
+    </div>
+    <div class="card-header bg-light d-none d-md-block d-lg-block">
+        <div class="row d-flex align-items-center">
+            <div class="form-group col-md-3">
+                <label class="col-form-label col-form-label-sm">Building Type </label>
+                <select class="form-control" id="buildingType" [(ngModel)]="buildingType" (change)="onFilterChange()">
+                    <option></option>
+                    <option *ngFor="let t of buildingTypes" value="{{t}}">{{t}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label class="col-form-label col-form-label-sm">Service Type </label>
+                <select class="form-control" id="serviceType">
+                    <option></option>
+                    <option>Gas</option>
+                    <option>Electric</option>
+                    <option>Both</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label class="col-form-label col-form-label-sm">Construction Status </label>
+                <select class="form-control" id="contructionStatus">
+                    <option></option>
+                    <option>Active</option>
+                    <option>Inactive</option>
+                </select>
+            </div>
+            <div class="form-group col-md-2">
+                <label class="col-form-label col-form-label-sm">Zip Code </label>
+                <input class="form-control" type="text" [(ngModel)]="zipCode" (change)="onFilterChange()" />
+            </div>
+            <div class="form-group col-md-2">
+                <label class="col-form-label col-form-label-sm">Square Ft. </label>
+                <select class="form-control" id="squareFt">
+                    <option></option>
+                    <option>Greater 500</option>
+                    <option>Less than 500</option>
+                </select>
+            </div>
+            <div class="form-group col-md-1 pt-4">
+                <button class="btn btn-sm btn-primary float-right" (click)="search()"><i class="fa fa-search"></i> Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" *ngIf="buildings">
+        <mat-paginator [length]="length"
+                       [pageSize]="pageSize"
+                       [pageSizeOptions]="pageSizeOptions"
+                       (page)="onPage($event)">
+        </mat-paginator>
+        <div class="list-group-flush">
+            <a (click)="selectBuilding(b.buildingId)" class="pointer mt-2 list-group-item list-group-item-action list-group-item-primary" *ngFor="let b of buildings">
+                <div class="d-flex justify-content-between">
+                    <h5 class="mb-1">{{b.name}}</h5>
+                </div>
+                <div class="row mb-n3">
+                    <div class="col-md-6">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><label>Building ID:</label></li>
+                            <li class="list-inline-item">{{b.epmBuildingId}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><label>Building Type:</label></li>
+                            <li class="list-inline-item">{{b.function}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <ul class="list-inline m-0 p-0">
+                            <li class="list-inline-item"><label>Address:</label></li>
+                            <li class="list-inline-item">{{b.addressLine1}}</li>
+                            <li class="list-inline-item" *ngIf="b.addressLine2">{{b.addressLine2}}</li>
+                            <li class="list-inline-item">{{b.city}}</li>
+                            <li class="list-inline-item">{{b.state}}</li>
+                            <li class="list-inline-item">{{b.zipCode}}</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><label>Square Ft:</label></li>
+                            <li class="list-inline-item">{{b.floorArea}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </a>
+
+            <mat-paginator *ngIf="buildings && buildings.length>=10" [length]="length"
+                           [pageSize]="pageSize"
+                           [pageSizeOptions]="pageSizeOptions"
+                           (page)="onPage($event)">
+            </mat-paginator>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+

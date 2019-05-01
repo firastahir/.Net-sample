@@ -1,0 +1,166 @@
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>Registration</h3>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="alert alert-info" role="alert">
+                        <div class="media">
+                            <div class="media-left">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="svg-icon">
+                                    <title>Alert Info</title>
+                                    <path d="M21.55,12a9.55,9.55,0,0,0-19.1,0h0a9.55,9.55,0,0,0,19.1,0"></path>
+                                    <g>
+                                        <line x1="12" y1="17.5" x2="12" y2="10.5"></line>
+                                        <line x1="12" y1="7.5" x2="12" y2="6.5"></line>
+                                    </g>
+                                </svg>
+
+                            </div>
+                            <div class="media-body">
+                                <p><strong>If you have an existing Energy Star Account,</strong> please enter the following information exactly as it appears on that account</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <form class="needs-validation" [formGroup]="epmForm">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="firstName">First Name</label>
+                            <input class="form-control" type="text" formControlName="firstName" />
+                            <div invalidmessageFor="firstName" class="text-danger">
+                                <p *invalidType="'required'">Please provide First Name</p>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="lastName">Last Name</label>
+                            <input class="form-control" type="text" formControlName="lastName" />
+                            <div invalidmessageFor="lastName" class="text-danger">
+                                <p *invalidType="'required'">Please provide Last Name</p>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="city">Phone Number</label>
+                            <input type="text" class="form-control" formControlName="phoneNumber" />
+                            <div invalidmessageFor="phoneNumber" class="text-danger">
+                                <p *invalidType="'required'">Please provide Phone Number</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="businessName">Business Name</label>
+                            <input class="form-control" type="text" formControlName="businessName" />
+                            <div invalidmessageFor="businessName" class="text-danger">
+                                <p *invalidType="'required'">Please provide Business Name</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <label for="taxId">Tax ID</label>
+                            <input class="form-control" type="text" formControlName="taxID" />
+                            <div invalidmessageFor="taxID" class="text-danger">
+                                <p *invalidType="'required'">Please provide Tax ID</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="primaryFunction">Primary Business Function</label>
+                            <select class="form-control" formControlName="businessFunction">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <div invalidmessageFor="businessFunction" class="text-danger">
+                                <p *invalidType="'required'">Please provide Business Function</p>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="jobTitle">Job Title</label>
+                            <input class="form-control" type="text" formControlName="jobTitle" />
+                            <div invalidmessageFor="jobTitle" class="text-danger">
+                                <p *invalidType="'required'">Please provide Job Title</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="addressLine1">Address Line 1</label>
+                            <input class="form-control" type="text" formControlName="addressLine1" />
+                            <div invalidmessageFor="addressLine1" class="text-danger">
+                                <p *invalidType="'required'">Please provide Address</p>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="addressLine2">Address Line 2</label>
+                            <input class="form-control" type="text" formControlName="addressLine2" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4 d-inline">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" formControlName="city" />
+                            <div invalidmessageFor="city" class="text-danger">
+                                <p *invalidType="'required'">Please enter City</p>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4 d-inline">
+                            <label for="state">State</label>
+                            <input type="text" class="form-control" formControlName="state" />
+                            <div invalidmessageFor="state" class="text-danger">
+                                <p *invalidType="'required'">Please provide State</p>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4 d-inline">
+                            <label>Zip Code</label>
+                            <input type="text" class="form-control" formControlName="zipCode" />
+                            <div invalidmessageFor="zipCode" class="text-danger">
+                                <p *invalidType="'required'">Please provide Zip Code</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Are you an Energy Star Partner?</label>
+                            <fieldset>
+                                <div class="custom-control custom-control-inline custom-radio">
+                                    <input class="custom-control-input" type="radio" id="partner" formControlName="isPartner" value="true">
+                                    <label for="partner" class="custom-control-label">Yes</label>
+                                </div>
+                                <div class="custom-control custom-control-inline custom-radio">
+                                    <input class="custom-control-input" type="radio" id="nonPartner" formControlName="isPartner" value="false">
+                                    <label for="nonPartner" class="custom-control-label">No</label>
+                                </div>
+                            </fieldset>
+                            <div invalidmessageFor="isPartner" class="text-danger">
+                                <p *invalidType="'required'">Please select Partner</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6" *ngIf="epmForm.get('isPartner').value == 'true'">
+                            <label for="primaryFunction">Partner Type</label>
+                            <select class="form-control" formControlName="partnerType">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                            </select>
+                            <div invalidmessageFor="partnerType" class="text-danger">
+                                <p *invalidType="'required'">Please select a Partner Type</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button class="btn btn-block btn-success" (click)="onSubmit()">Submit</button>
+                        <a routerLink="/registration-continue" class="btn btn-block btn-link">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

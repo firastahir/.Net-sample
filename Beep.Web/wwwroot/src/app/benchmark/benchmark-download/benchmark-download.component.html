@@ -1,0 +1,88 @@
+<div class="card rounded-top" *ngIf="building">
+    <div class="card-header bg-primary text-white">
+        <div class="row d-flex justify-content-between">
+            <h3 class="p-2">
+                {{building.name}}
+            </h3>
+            <small class="float-right p-2 text-right pt-1">
+                <a routerLink="/buildings" class="btn btn-sm btn-light text-primary">
+                    Switch Building <i class="fa fa-chevron-right"></i>
+                </a>
+            </small>
+        </div>
+    </div>
+    <div class="card-header bg-transparent border-bottom-0">
+        <building-info [showEditLink]="true"></building-info>
+    </div>
+    <div class="row card-body">
+        <div class="card col-md-4">
+            <div class="bg-primary text-white card-header">
+                <strong>Download</strong>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+                    <div class="justify-content-center">
+                        <mat-form-field class="col">
+                            <input matInput [matDatepicker]="startPicker" placeholder="Start Date" formControlName="startDate">
+                            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                            <mat-datepicker #startPicker></mat-datepicker>
+                            <mat-error align="right" *ngIf="searchForm.get('startDate').hasError('required')">Required</mat-error>
+                        </mat-form-field>
+                        <mat-form-field class="col">
+                            <input matInput [matDatepicker]="endPicker" placeholder="End Date" formControlName="endDate" />
+                            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                            <mat-datepicker #endPicker></mat-datepicker>
+                            <mat-error align="right" *ngIf="searchForm.get('endDate').hasError('required')">Required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group text-center">
+                        <button class="btn btn-block btn-success"><i class="fa fa fa-search"></i> Search</button>
+                        <a routerLink="/building-detail/{{buildingId}}" class="btn btn-link">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="card col-sm-8" *ngIf="search">
+
+            <div class="card-header text-white bg-primary">
+                <strong>Usage</strong>
+                <div class="float-right">
+                    <button class="btn btn-sm btn-light text-primary"><i class="fa fa-download"></i> Download</button>
+                </div>
+            </div>
+            <div class="card-body">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th>Meter ID</th>
+                            <th>From</th>
+                            <th>To</th>
+                            <th>Usage</th>
+                            <th>Product</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let usage of buildingUsage">
+                        <tr>
+                            <td>
+                                {{usage.meterID}}
+                            </td>
+                            <td>
+                                {{usage.dateFrom}}
+                            </td>
+                            <td>
+                                {{usage.dateTo}}
+                            </td>
+                            <td>
+                                {{usage.meterUsage}}
+
+                            </td>
+                            <td>
+                                {{usage.meterType}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

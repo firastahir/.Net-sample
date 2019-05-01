@@ -1,0 +1,110 @@
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-primary text-white text-center">
+                <h3>Registration</h3>
+            </div>
+
+            <div class="card-body">
+                <form [formGroup]="initalForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>User Name</label>
+                        <input type="text" formControlName="userName" class="form-control" />
+                        <div invalidmessageFor="userName" class="text-danger">
+                            <p *invalidType="'required'">User Name is required</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" formControlName="email" class="form-control" />
+                        <div invalidmessageFor="email" class="text-danger">
+                            <p *invalidType="'required'">Email is required</p>
+                            <p *invalidType="'email'">Email must be a valid email address</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" formControlName="password" class="form-control" />
+                        <div invalidmessageFor="password" class="text-danger">
+                            <p *invalidType="'required'">Password is required</p>
+                                <p *invalidType="'minlength'">Password must be at least 8 characters.</p>
+                                <p *invalidType="'pattern'">Must include a number, a letter and a special character (e.g. @!#).</p>
+                            </div>
+                            <!--<div invalidmessageFor="password" class="text-danger">
+                                <div *ngIf="initalForm.controls.password.errors?.IsRequired">
+                                    Pasword is Required.
+                                </div>
+                                <div *ngIf="(initalForm.get('password').invalid)">
+                                    Please enter valid password.
+                                </div>
+                                <div *ngIf="initalForm.get('password').value && registrationForm.get('password').value.length<8">
+                                    We require at least 8 characters.
+                                </div>
+                                <div *ngIf="initalForm.get('password').value && registrationForm.get('password').value.length>250">
+                                    Password exceeds the maximum number of characters allowed.
+                                </div>
+                                <div *ngIf="initalForm.controls.password.errors?.LetterAndNumberAndSpecialChar">
+                                    Include a number, a letter and a special character (@!#)
+                                </div>
+                                <div *ngIf="initalForm.controls.password.errors?.InvalidCharacters">
+                                    Cannot contain the characters < > &
+                                </div>
+                                <div *ngIf="initalForm.controls.password.errors?.RepeatingCharacters">
+                                    Cannot have more than 2 repeating characters (e.g. aaa)
+                                </div>
+                                <div *ngIf="initalForm.controls.password.errors?.NoLeadingTrailingSpaces">
+                                    Cannot begin or end with a space.
+                                </div>
+                                <div *ngIf="initalForm.controls.password.errors?.NoTwoContinuousSpaces">
+                                    Cannot contain two continuous spaces.
+                                </div>
+                                <div *ngIf="registrationForm.controls.Password.errors?.NoControlCharacters">
+                                    The password field must not contain whitespace other than a space character.
+                                </div>
+                            </div>
+                        </div>-->
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" formControlName="confirmPassword" class="form-control" />
+                        <div invalidmessageFor="confirmPassword" class="text-danger">
+                            <p *invalidType="'required'">Confirm Password is required</p>
+                            <div *ngIf="initalForm.get('confirmPassword').errors.ConfirmPassword && initalForm.get('confirmPassword').value != ''">
+                                <p>Passwords must match</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Select a security question</label>
+                        <select class="form-control" formControlName="securityQuestionId">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                        </select>
+                        <div invalidmessageFor="securityQuestionId" class="text-danger">
+                            <p *invalidType="'required'">Security question is required</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Security Answer</label>
+                        <input type="text" formControlName="securityAnswer" class="form-control" />
+                        <div invalidmessageFor="securityAnswer" class="text-danger">
+                            <p *invalidType="'required'">Security answer is required</p>
+                        </div>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="termCheck" formControlName="confirmTerms" />
+                        <label class="custom-control-label" for="termCheck">I agree to the <a href="">User Terms and Conditions</a></label>
+                        <div invalidmessageFor="confirmTerms" class="text-danger">
+                            <p *invalidType="'required'">Terms and Condition is required</p>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button class="btn btn-block btn-success">Submit</button>
+                        <a routerLink="/home" class="btn btn-block btn-link">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

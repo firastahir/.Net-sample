@@ -1,0 +1,27 @@
+
+<div class="row justify-content-center">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="text-primary text-center">Manage Locations</h3>
+    </div>
+    <div class="card-body" *ngIf="locations">
+        <div class="col-md-12 border-top border-bottom pt-1 pb-1" *ngFor="let l of locations; index as i">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="customCheck{{i}}">
+            <label class="custom-control-label font-weight-normal" for="customCheck{{i}}">
+                {{l.address.addressLine1}}
+                {{l.address.addressLine2}}
+                {{l.address.city}}
+                {{l.address.state}}
+                {{l.address.zipCode}}
+            </label>
+          </div>
+        </div>
+        <div class="col-md-12 mt-4">
+          <button class="btn btn-danger btn-block" (click)="deleteAll()">Delete</button>
+          <a routerLink="/building-detail/{{buildingId}}" class="btn btn-link btn-block">Cancel</a>
+        </div>
+    </div>
+  </div>
+</div>
+

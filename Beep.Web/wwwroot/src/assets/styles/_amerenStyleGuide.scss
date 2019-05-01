@@ -1,0 +1,247 @@
+﻿
+
+/*#region Ameren Buttons*/
+.btn {
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    font-weight: 400;
+}
+
+.btn-success:hover {
+    background-color: #2bb348;
+    border-color: #2bb348;
+}
+
+.btn-primary:hover {
+    background-color: #4c97d9;
+    border-color: #4c97d9;
+}
+/*#endregion Ameren Buttons*/
+
+/*#region SVG Icons*/
+.alert-info svg {
+    stroke: #4c97d9;
+}
+
+.alert svg {
+    stroke-width: 2px;
+    vertical-align: middle;
+}
+
+.svg-icon {
+    width: 1em;
+    height: 1em;
+    font-size: 24px;
+    box-sizing: content-box;
+    fill: none;
+    stroke: #08060d;
+    stroke-width: 1px;
+    stroke-miterlimit: 10;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    shape-rendering: geometricprecision;
+}
+/*#endregion SVG Icons*/
+
+/*#region Font Family*/
+//== Roboto
+//
+//## Light (300)
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 300;
+    src: local('Roboto Light'), local('Roboto-Light'), url('/fonts/roboto-v18-latin-300.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('/fonts/roboto-v18-latin-300.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+//## Light (300) Italic
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 300;
+    src: local('Roboto Light Italic'), local('Roboto-LightItalic'), url('/fonts/roboto-v18-latin-300italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('/fonts/roboto-v18-latin-300italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+//## Regular (400)
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto'), local('Roboto-Regular'), url('/fonts/roboto-v18-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('/fonts/roboto-v18-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+//## Regular (400) Italic
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Roboto Italic'), local('Roboto-Italic'), url('/fonts/roboto-v18-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('/fonts/roboto-v18-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+//## Bold (700)
+@font-face {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Roboto Bold'), local('Roboto-Bold'), url('/fonts/roboto-v18-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('/fonts/roboto-v18-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+//## Bold (700) Italic
+@font-face {
+    font-family: 'Roboto';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Roboto Bold Italic'), local('Roboto-BoldItalic'), url('/fonts/roboto-v18-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('/fonts/roboto-v18-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+
+//== Roboto Condensed
+//
+//## Regular (400)
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Roboto Condensed'), local('RobotoCondensed-Regular'), url('/fonts/roboto-condensed-v16-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('/fonts/roboto-condensed-v16-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+//## Regular (400) Italic
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Roboto Condensed Italic'), local('RobotoCondensed-Italic'), url('/fonts/roboto-condensed-v16-latin-italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('/fonts/roboto-condensed-v16-latin-italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+//## Bold (700)
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Roboto Condensed Bold'), local('RobotoCondensed-Bold'), url('/fonts/roboto-condensed-v16-latin-700.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('/fonts/roboto-condensed-v16-latin-700.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+//## Bold (700) Italic
+@font-face {
+    font-family: 'Roboto Condensed';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Roboto Condensed Bold Italic'), local('RobotoCondensed-BoldItalic'), url('/fonts/roboto-condensed-v16-latin-700italic.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ */
+    url('/fonts/roboto-condensed-v16-latin-700italic.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/*#endregion Font Family*/
+
+/*#region Ameren Colors*/
+//== Colors
+//
+//## All colors definitions
+
+// Green
+$green-050: #f7fff2;
+$green-300: #2bb348;
+$green-500: #218737; // Ameren Green
+$green: $green-500; // Ameren Green
+$green-700: #175e26;
+$green-900: #124a1e;
+
+// Blue
+$blue-050: #e8f1fa;
+$blue-100: #65B6FF;
+$blue-300: #4c97d9;
+$blue-500: #1b6cb5; // Ameren Blue
+$blue-700: #145289;
+$blue-900: #114472;
+
+// Gray
+$gray-05: #f4f4f4;
+$gray-10: #e3e3e3;
+$gray-20: #c6c6c6;
+$gray-40: #959595;
+$gray-60: #636363; // Ameren Gray
+$gray-80: #363636;
+
+// Red
+$red-050: #f4e2e2;
+$red-300: #ff4d4d;
+$red-500: #d2332f;
+$red-700: #8c1207;
+$red-900: #520606;
+
+// Yellow
+$yellow-050: #fdf9e7;
+$yellow-300: #faea91;
+$yellow-500: #f0d22b;
+$yellow-700: #d49100;
+$yellow-900: #8c540a;
+
+// Digital Blue
+$digital-blue-500: #1a53ff;
+
+// Purple
+$purple-500: #4a1de1;
+
+// Black and White
+$black: #08060d;
+$white: #fff;
+
+
+$dark-green: $green-700;
+$border-green: $green-900;
+
+// Swatches
+$primary-swatch-a: $green-500;
+$primary-swatch-b: $blue-500;
+$primary-swatch-c: $red-500;
+$primary-swatch-d: $black;
+
+$accent-swatch-a: $purple-500;
+$accent-swatch-b: $yellow-500;
+
+$grayscale-swatch-a: $gray-80;
+$grayscale-swatch-b: $gray-60;
+$grayscale-swatch-c: $gray-10;
+$grayscale-swatch-d: $gray-05;
+
+
+// Font Colors
+$base-font-color: $grayscale-swatch-b;
+$action-color: $primary-swatch-b;
+$form-input-color: $grayscale-swatch-b;
+
+
+// Bootstrap Colors
+$brand-primary: $primary-swatch-a;
+$brand-success: $primary-swatch-a;
+$brand-info: $primary-swatch-b;
+$brand-warning: $accent-swatch-b;
+$brand-danger: $primary-swatch-c;
+
+
+//== Form states and alerts
+//
+//## Define colors for form feedback states and, by default, alerts.
+
+$state-success-text: $green-900;
+$state-success-bg: $green-050;
+$state-success-border: rgba($green-300, 0.5);
+$state-success-icon: $green-500;
+
+$state-info-text: $blue-900;
+$state-info-bg: rgba($blue-050, 0.4);
+$state-info-border: rgba($blue-300, 0.5);
+$state-info-icon: $blue-300;
+
+$state-warning-text: $yellow-900;
+$state-warning-bg: $yellow-050;
+$state-warning-border: rgba($yellow-300, 1);
+$state-warning-icon: $yellow-700;
+
+$state-danger-text: $red-900;
+$state-danger-bg: rgba($red-050, 0.4);
+$state-danger-border: rgba($red-300, 0.5);
+$state-danger-icon: $red-500;
+
+/*#endregion Ameren Colors*/

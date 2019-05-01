@@ -1,0 +1,59 @@
+<div class="card text-white shadow" *ngIf="building">
+    <div class="card-header bg-secondary">
+        <strong>
+            Building Information
+        </strong>
+        <a *ngIf="showEditLink" routerLink="/edit-building/{{building.buildingId}}" class="btn btn-sm btn-light text-primary float-right"><i class="fa fa-edit"></i> Edit</a>
+    </div>
+    <div class="card-body text-small pb-0 bg-secondary">
+        <div class="row justify-content-center">
+            <div class="col-md-4">
+                <dl>
+                    <dt class="d-inline pr-1">Building ID:</dt>
+                    <dd class="d-inline">{{building.epmBuildingId}}</dd>
+                </dl>
+
+                <dl>
+                    <dt class="d-inline pr-1">Description:</dt>
+                    <dd class="d-inline">{{building.name}}</dd>
+                </dl>
+                <dl>
+                    <dt class="d-inline pr-1">Year Built</dt>
+                    <dd class="d-inline">{{building.yearBuilt}}</dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl>
+                    <dt class="d-inline pr-1">ESPM Gas Meter ID:</dt>
+                    <dd class="d-inline">{{building.gasMeterID}}</dd>
+                </dl>
+                <dl>
+                    <dt class="d-inline pr-1">Floor Area:</dt>
+                    <dd class="d-inline">{{building.floorArea}} Sqft</dd>
+                </dl>
+                <dl>
+                    <dt class="d-inline pr-1">Construction Status:</dt>
+                    <dd class="d-inline">{{building.constructionStatus}}</dd>
+                </dl>
+            </div>
+            <div class="col-md-4">
+                <dl>
+                    <dt class="d-inline pr-1">ESPM Electric MeterID:</dt>
+                    <dd class="d-inline">{{building.electricMeterID}}</dd>
+                </dl>
+                <dl>
+                    <dt class="d-inline pr-1">Occupancy Percent:</dt>
+                    <dd class="d-inline">{{building.occupancyPercent}}</dd>
+                </dl>
+                <dl>
+                    <dt class="d-inline pr-1">Address:</dt>
+                    <dd class="d-inline">
+                        {{building.addressLine1}} {{building.addressLine2}}
+                        {{building.city}} {{building.state}} {{building.zipCode}}
+                    </dd>
+                </dl>
+            </div>
+        </div>
+
+    </div>
+</div>

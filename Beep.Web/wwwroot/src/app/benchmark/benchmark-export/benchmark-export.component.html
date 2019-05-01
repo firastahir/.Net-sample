@@ -1,0 +1,59 @@
+<div class="card rounded-top" *ngIf="building">
+    <div class="card-header bg-secondary text-white">
+        <div class="row d-flex justify-content-between">
+            <h3 class="p-2">
+                {{building.name}}
+            </h3>
+            <small class="float-right p-2 text-right pt-1">
+                <a routerLink="/buildings" [queryParams]="{returnUrl:'benchmark-export'}" class="btn btn-sm btn-light text-primary">Switch Building <i class="fa fa-chevron-right"></i></a>
+            </small>
+        </div>
+    </div>
+    <div class="card-header bg-transparent border-bottom-0">
+        <building-info [showEditLink]="false"></building-info>
+    </div>
+    <div class="card-body">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-success text-center text-white">
+                        <strong>Export to Energy Star</strong>
+                    </div>
+                    <div class="card-body">
+
+                        <div class="row justify-content-center">
+                            <div class="form-group" *ngIf="!isNewUser">
+                                <label>How many months of usage data?</label>
+                                <fieldset>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input class="custom-control-input" type="radio" id="2Months" name="isBenchmark" [value]="2">
+                                        <label for="2Months" class="custom-control-label">2 Months</label>
+                                    </div>
+                                    <div class="custom-control custom-radio custom-control-inline">
+                                        <input class="custom-control-input" type="radio" id="24Months" name="isBenchmark" [value]="24">
+                                        <label for="24Months" class="custom-control-label">24 Months</label>
+                                    </div>
+                                </fieldset>
+                            </div>
+                            <div class="form-group" *ngIf="isNewUser">
+                                <label>We will export 24 months of usage data for this building.</label>
+                            </div>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="isRecurring">
+                                <label class="custom-control-label" for="isRecurring">Would you like to setup recurring exports?</label>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button class="btn btn-block btn-success" (click)="onSubmit()">Submit</button>
+                        </div>
+                        <div class="form-group text-center">
+                            <a routerLink="/building-detail/{{buildingId}}" class="btn btn-default">Cancel</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

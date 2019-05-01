@@ -1,0 +1,158 @@
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header bg-primary">
+                <h3 class="text-white text-center">Add Building</h3>
+            </div>
+            <div class="card-body border m-2">
+                <div class="custom-control custom-radio" (click)="selectAction('new')">
+                    <input type="radio" id="newBuilding" name="actionType" class="custom-control-input">
+                    <label class="custom-control-label font-weight-normal" for="newBuilding">Create a New Building</label>
+                </div>
+                <div class="custom-control custom-radio mt-2 mb-2" (click)="selectAction('existing')">
+                    <input type="radio" id="existingBuilding" name="actionType" class="custom-control-input">
+                    <label class="custom-control-label font-weight-normal" for="existingBuilding">Add an existing building that is already being benchmarked with Energy Star</label>
+                </div>
+
+                <div class="form-group" *ngIf="action && action!='new'">
+                    <form [formGroup]="addBuildingForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label>ESPM Building ID</label>
+                            <input type="text" class="form-control" formControlName="epmBuildingID" placeholder="Enter ESPM Building ID" />
+                            <div invalidmessageFor="epmBuildingID" class="text-danger">
+                                <p *invalidType="'required'">Please enter ESPM BuildingID.</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card-body" *ngIf="action">
+                <div *ngIf="action && action=='new'">
+                    <form [formGroup]="createBuildingForm" (ngSubmit)="onSubmit()">
+                        <div class="row">
+
+                            <div class="form-group col-md-6">
+                                <label>Description</label>
+                                <input type="text" class="form-control" formControlName="description" placeholder="Enter Building Name" />
+                                <div invalidmessageFor="description" class="text-danger">
+                                    <p *invalidType="'required'">
+                                        Please enter building description.
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Building Type</label>
+                                <select class="form-control" formControlName="function">
+                                    <option value="">--Please select building type--</option>
+                                    <option *ngFor="let t of buildingTypes" value="{{t}}">{{t}}</option>
+                                </select>
+                                <div invalidmessageFor="function" class="text-danger">
+                                    <p *invalidType="'required'">Please select a building type.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label class="w-100 p-0">Construction Status</label>
+                                <select class="form-control" formControlName="constructionStatus">
+                                    <option value="">--Please select construction status--</option>
+                                    <option *ngFor="let c of constructionStatuses" value="{{c}}">{{c}}</option>
+                                </select>
+                                <div invalidmessageFor="constructionStatus" class="text-danger">
+                                    <p *invalidType="'required'">Please select construction status.</p>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Occupancy Percent</label>
+                                <input type="text" class="form-control" formControlName="occupancyPercent" placeholder="1-100%" />
+                                <div invalidmessageFor="occupancyPercent" class="text-danger">
+                                    <p *invalidType="'required'">Please enter a value between 1 - 100.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="form-group col-md-6">
+                                <label>Floor Area <em>(in Sqft.)</em></label>
+                                <input type="number" class="form-control" formControlName="floorArea" placeholder="Floor Area in Square Feet" />
+                                <div invalidmessageFor="floorArea" class="text-danger">
+                                    <p *invalidType="'required'">Please enter floor area.</p>
+                                    <p *invalidType="'min'">Please enter a value greater than 0</p>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label>Year Built</label>
+                                <input type="number" class="form-control" formControlName="yearBuilt" placeholder="Enter Year Built" />
+                                <div invalidmessageFor="yearBuilt" class="text-danger">
+                                    <p *invalidType="'required'">Please enter year built.</p>
+                                    <p *invalidType="'max'">must be between 0-{{currentYear}}</p>
+                                    <p *invalidType="'min'">must be between 0-{{currentYear}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group" formGroupName="address" *ngIf="createBuildingForm.controls['address']">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label>Address Line1</label>
+                                    <input type="text" formControlName="addressLine1" class="form-control" placeholder="Enter Address Line1"
+                                           [ngClass]="{'is-invalid':createBuildingForm.controls['address'].get('addressLine1').dirty && createBuildingForm.controls['address'].get('addressLine1').invalid}" />
+
+                                    <div class="text-danger" *ngIf="createBuildingForm.controls['address'].get('addressLine1').dirty && createBuildingForm.controls['address'].get('addressLine1').invalid">
+                                        Please enter a valid address.
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label>Address Line2</label>
+                                    <input type="text" formControlName="addressLine2" class="form-control" placeholder="Enter Address Line2" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4 d-inline">
+                                    <label>City</label>
+                                    <input type="text" formControlName="city" class="form-control" placeholder="Enter City"
+                                           [ngClass]="{'is-invalid':createBuildingForm.controls['address'].get('city').dirty && createBuildingForm.controls['address'].get('city').invalid}" />
+
+                                    <div class="text-danger" *ngIf="createBuildingForm.controls['address'].get('city').dirty && createBuildingForm.controls['address'].get('city').invalid">
+                                        Please enter city.
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4 d-inline">
+                                    <label>State</label>
+                                    <input type="text" class="form-control" formControlName="state" placeholder="Enter State"
+                                           [ngClass]="{'is-invalid':createBuildingForm.controls['address'].get('state').dirty && createBuildingForm.controls['address'].get('state').invalid}" />
+
+                                    <div class="text-danger" *ngIf="createBuildingForm.controls['address'].get('state').dirty && createBuildingForm.controls['address'].get('state').invalid">
+                                        Please enter state.
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4 d-inline">
+                                    <label>Zip</label>
+                                    <input type="number" class="form-control" formControlName="zipCode" placeholder="Enter Zip"
+                                           [ngClass]="{'is-invalid':createBuildingForm.controls['address'].get('zipCode').dirty && createBuildingForm.controls['address'].get('zipCode').invalid,'is-valid':createBuildingForm.controls['address'].get('zipCode').dirty && createBuildingForm.controls['address'].get('zipCode').valid}" />
+                                    <div class="text-danger" *ngIf="createBuildingForm.controls['address'].get('zipCode').dirty && createBuildingForm.controls['address'].get('zipCode').invalid">
+                                        Please enter a valid zip code.
+                                    </div>
+                                    <div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

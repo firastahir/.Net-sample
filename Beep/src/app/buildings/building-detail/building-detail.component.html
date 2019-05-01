@@ -1,0 +1,115 @@
+<div class="card-deck mb-2" *ngIf="building">
+  <div *ngIf="building" class="card">
+    <div class="card-header">
+      <h4 class="text-center text-primary">Building Details</h4>
+      <a routerLink="/edit-building/{{building.buildingID}}" class="btn btn-sm btn-warning float-right"><i class="fa fa-edit"></i> Edit</a>
+    </div>
+    <div class="card-body">
+      <table class="table table-sm table-hover">
+        <tbody>
+          <tr class="border-0">
+            <td class="text-right">
+              <label>
+                ESPM Building ID:
+              </label>
+            </td>
+            <td>
+              {{building.buildingID}}
+            </td>
+          </tr>
+          <tr>
+            <td class="text-right">
+              <label>
+                Building Description:
+              </label>
+            </td>
+            <td>
+              {{building.description}}
+            </td>
+          </tr>
+          <tr>
+            <td class="text-right">
+              <label>Square Feet:</label>
+            </td>
+            <td>
+              {{building.sqFeet}}
+            </td>
+          </tr>
+          <tr>
+            <td class="text-right">
+              <label>ESPM Gas Meter ID:</label>
+            </td>
+            <td>
+              {{building.gasMeterID}}
+            </td>
+          </tr>
+          <tr>
+            <td class="text-right">
+              <label>ESPM Electric Meter ID:</label>
+            </td>
+            <td>
+              {{building.electricMeterID}}
+            </td>
+          </tr>
+          <tr>
+            <td class="text-right">
+              <label>Address:</label>
+            </td>
+            <td>
+              <div>
+                {{building.address.addressLine1}} {{building.address.addressLine2}}
+              </div>
+              <div>
+                {{building.address.city}} {{building.address.state}} {{building.address.zipCode}}
+              </div>
+            </td>
+          </tr>
+       
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="text-primary text-center">
+        Locations
+      </h4>
+      <a routerLink="/manage-locations/{{building.buildingID}}" class="btn btn-sm btn-warning float-right"><i class="fa fa-edit"></i> Edit</a>
+
+    </div>
+    <div class="card-body">
+      <table class="table table-sm table-hover">
+        <tbody>
+          <tr *ngFor="let l of building.locations">
+            <td class="text-center">
+              <div>
+                <ul class="list-inline list-unstyled">
+                  <li class="list-inline-item">
+                    {{l.address.addressLine1}}
+                  </li>
+                  <li *ngIf="l.address.addressLine2" class="list-inline-item">
+                    {{l.address.addressLine2}}
+                  </li>
+                  <li class="list-inline-item">
+                    {{l.address.city}}
+                  </li>
+                  <li class="list-inline-item">
+                    {{l.address.state}}
+                  </li>
+                  <li class="list-inline-item">
+                    {{l.address.zipCode}}
+                  </li>
+                </ul>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</div>
+
+<progress-mask *ngIf="loading"></progress-mask>
+

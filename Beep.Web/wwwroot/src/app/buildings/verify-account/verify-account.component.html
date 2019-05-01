@@ -1,0 +1,16 @@
+<h2 mat-dialog-title>Verify Account</h2>
+
+<mat-dialog-content>
+    <p>This building will have only one associated location following this transaction. Please enter account number to continue.</p>
+    <mat-form-field>
+        <input matInput [(ngModel)]="data.accountNumber" placeholder="Enter account number" type="number">
+    </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions class="justify-content-center">
+    <button mat-button (click)="onCancel()" class="btn btn-danger">Cancel</button>
+    <button mat-button (click)="onSubmit()" class="btn btn-success">Submit</button>
+</mat-dialog-actions>
+
+
+
+

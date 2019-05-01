@@ -1,0 +1,50 @@
+<div class="row justify-content-md-center">
+  <div [ngClass]="{'col-md-12':shrink,'col-md-6':'!shrink'}">
+      <div class="card">
+          <div class="card-header bg-primary text-white">
+              <h3 class="text-center"><i class="fa fa-sign-in"></i> Login</h3>
+          </div>
+          <div class="card-body">
+              <form class="needs-validation" [formGroup]="loginForm" (ngSubmit)="login()" novalidate>
+                  <div class="form-group">
+                      <a routerLink="/forgot-userid" class="float-right">Forgot UserID</a>
+                      <label>UserID</label>
+                      <input type="text" (keypress)="inputChange()" formControlName="userID" class="input-lg form-control" />
+                      <div invalidmessageFor="userID" class="text-danger">
+                          <p *invalidType="'required'">Please enter userID</p>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <a routerLink="/forgot-password" class="float-right">Forgot Password</a>
+                      <label>Password</label>
+                      <input type="password" (keypress)="inputChange()" formControlName="password" class="input-lg form-control" [ngClass]="{'is-invalid':loginForm.get('password').dirty && loginForm.get('password').invalid,'is-valid':loginForm.get('password').valid}" />
+                      <div invalidmessageFor="password" class="text-danger">
+                          <p *invalidType="'required'">Please enter password</p>
+                      </div>
+                  </div>
+                  <div class="form-group">
+                      <button type="submit" class="btn btn-block btn-success">Login</button>
+                  </div>
+                  <div class="form-group" *ngIf="errorMsg">
+                      <div class="alert alert-danger">
+                          {{errorMsg}}
+                      </div>
+                  </div>
+                  <div class="form-group text-divider">
+                      <span>New User?</span>
+                  </div>
+                  <div class="form-group text-center">
+                      <a routerLink="/registration">Register <i class="fa fa-chevron-right"></i></a>
+                  </div>
+                  <div class="form-group text-divider">
+                      <span>Need Help?</span>
+                  </div>
+                  <div class="form-group text-center">
+                      <a  href="../../../documents/BeepUserGuide.docx">Review User Guide <i class="fa fa-file-word-o"></i></a>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+

@@ -1,0 +1,158 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+    <TypeScriptBuildMode>true</TypeScriptBuildMode>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptExperimentalDecorators>True</TypeScriptExperimentalDecorators>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <UserSecretsId>485be1b8-23dc-485c-85bf-f26a57ec050f</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="log-03\**" />
+    <Compile Remove="log-04\**" />
+    <Compile Remove="wwwroot\Content\less\**" />
+    <Compile Remove="wwwroot\dist\**" />
+    <Compile Remove="wwwroot\src\app\benchmark\benchmark-upload\**" />
+    <Content Remove="log-03\**" />
+    <Content Remove="log-04\**" />
+    <Content Remove="wwwroot\Content\less\**" />
+    <Content Remove="wwwroot\dist\**" />
+    <Content Remove="wwwroot\src\app\benchmark\benchmark-upload\**" />
+    <EmbeddedResource Remove="log-03\**" />
+    <EmbeddedResource Remove="log-04\**" />
+    <EmbeddedResource Remove="wwwroot\Content\less\**" />
+    <EmbeddedResource Remove="wwwroot\dist\**" />
+    <EmbeddedResource Remove="wwwroot\src\app\benchmark\benchmark-upload\**" />
+    <None Remove="log-03\**" />
+    <None Remove="log-04\**" />
+    <None Remove="wwwroot\Content\less\**" />
+    <None Remove="wwwroot\dist\**" />
+    <None Remove="wwwroot\src\app\benchmark\benchmark-upload\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\Scripts\index.d.ts" />
+    <Content Remove="wwwroot\Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Remove="wwwroot\Scripts\jquery.validate-vsdoc.js" />
+    <Content Remove="wwwroot\src\app\app-routing.module.ts" />
+    <Content Remove="wwwroot\src\app\app.component.ts" />
+    <Content Remove="wwwroot\src\app\app.module.ts" />
+    <Content Remove="wwwroot\src\app\benchmark\benchmark-export\benchmark-export.component.ts" />
+    <Content Remove="wwwroot\src\app\benchmark\benchmark.component.ts" />
+    <Content Remove="wwwroot\src\app\buildings\add-building\add-building.component.ts" />
+    <Content Remove="wwwroot\src\app\buildings\add-locations\add-locations.component.ts" />
+    <Content Remove="wwwroot\src\app\buildings\building-detail\building-detail.component.ts" />
+    <Content Remove="wwwroot\src\app\buildings\edit-building\edit-building.component.ts" />
+    <Content Remove="wwwroot\src\app\buildings\list\buildings.component.ts" />
+    <Content Remove="wwwroot\src\app\buildings\manage-locations\manage-locations.component.ts" />
+    <Content Remove="wwwroot\src\app\contact-us\contact-us.component.ts" />
+    <Content Remove="wwwroot\src\app\faq\faq.component.ts" />
+    <Content Remove="wwwroot\src\app\login\login.component.ts" />
+    <Content Remove="wwwroot\src\app\manage-profile\edit-email\edit-email.component.ts" />
+    <Content Remove="wwwroot\src\app\manage-profile\edit-name\edit-name.component.ts" />
+    <Content Remove="wwwroot\src\app\manage-profile\edit-password\edit-password.component.ts" />
+    <Content Remove="wwwroot\src\app\manage-profile\edit-security-question\edit-security-question.component.ts" />
+    <Content Remove="wwwroot\src\app\manage-profile\manage-profile.component.ts" />
+    <Content Remove="wwwroot\src\app\models\role.model.ts" />
+    <Content Remove="wwwroot\src\app\models\user.model.js" />
+    <Content Remove="wwwroot\src\app\models\user.model.js.map" />
+    <Content Remove="wwwroot\src\app\models\user.model.ts" />
+    <Content Remove="wwwroot\src\app\nav\nav.component.ts" />
+    <Content Remove="wwwroot\src\app\services\building.service.ts" />
+    <Content Remove="wwwroot\src\app\utility\ajax-interceptor.ts" />
+    <Content Remove="wwwroot\src\app\utility\confirm-dialog\confirm-dialog.component.ts" />
+    <Content Remove="wwwroot\src\app\utility\progress-mask\progress-mask.component.ts" />
+    <Content Remove="wwwroot\src\app\utility\utility.auth-gaurd.ts" />
+    <Content Remove="wwwroot\src\environments\environment.prod.ts" />
+    <Content Remove="wwwroot\src\environments\environment.ts" />
+    <Content Remove="wwwroot\src\main.ts" />
+    <Content Remove="wwwroot\src\polyfills.ts" />
+    <Content Remove="wwwroot\src\test.ts" />
+    <Content Remove="wwwroot\tsconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Scripts\jquery-3.3.1.intellisense.js" />
+    <None Include="wwwroot\Scripts\jquery.validate-vsdoc.js" />
+    <None Include="wwwroot\src\app\home\home.component.less" />
+    <None Include="wwwroot\tsconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Faker.Net" Version="1.1.1" />
+    <PackageReference Include="log4net.Ext.Json" Version="2.0.8.3" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.4.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Serilog" Version="2.8.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="2.1.1" />
+    <PackageReference Include="Serilog.Extensions.Logging.File" Version="1.1.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.0.1" />
+    <PackageReference Include="Serilog.Sinks.Console" Version="3.1.1" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.0.0" />
+    <PackageReference Include="Syku.Serilog.Config" Version="1.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\src\app\app-routing.module.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\app.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\app.module.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\benchmark\benchmark-export\benchmark-export.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\benchmark\benchmark.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\buildings\add-building\add-building.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\buildings\add-locations\add-locations.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\buildings\building-detail\building-detail.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\buildings\edit-building\edit-building.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\buildings\list\buildings.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\buildings\manage-locations\manage-locations.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\contact-us\contact-us.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\faq\faq.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\home\home.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\login\login.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\manage-profile\edit-email\edit-email.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\manage-profile\edit-name\edit-name.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\manage-profile\edit-password\edit-password.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\manage-profile\edit-security-question\edit-security-question.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\manage-profile\manage-profile.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\models\role.model.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\models\user.model.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\nav\nav.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\services\building.service.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\utility\ajax-interceptor.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\utility\confirm-dialog\confirm-dialog.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\utility\progress-mask\progress-mask.component.ts" />
+    <TypeScriptCompile Include="wwwroot\src\app\utility\utility.auth-gaurd.ts" />
+    <TypeScriptCompile Include="wwwroot\src\environments\environment.prod.ts" />
+    <TypeScriptCompile Include="wwwroot\src\environments\environment.ts" />
+    <TypeScriptCompile Include="wwwroot\src\main.ts" />
+    <TypeScriptCompile Include="wwwroot\src\polyfills.ts" />
+    <TypeScriptCompile Include="wwwroot\src\test.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\documents\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Beep.APIClient\Beep.APIClient.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Web">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.2\System.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

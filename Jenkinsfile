@@ -1,7 +1,7 @@
 node {
     podTemplate(){
-    node('pod-dind') {
-         container('dind')
+    node('cd-jenkins-slave') {
+         container('jnlp')
      {
      
      stage('Install custom softwares') {

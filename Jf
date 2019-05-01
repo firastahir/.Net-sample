@@ -8,6 +8,9 @@ podTemplate(label: 'mypod', containers: [
   ]) {
     node('mypod') {
 
+        stage('git checkout') {
+         checkout scm
+         }
         stage('do some Docker work') {
             container('docker') {
 

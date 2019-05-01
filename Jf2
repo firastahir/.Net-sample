@@ -25,6 +25,12 @@ spec:
     }
   }
   stages {
+    stage('SCM') {
+    
+        node('mypod') {
+            checkout scm
+            }
+     }
     stage('Run maven') {
       steps {
         container('maven') {

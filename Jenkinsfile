@@ -1,6 +1,6 @@
 node {
     podTemplate(){
-    node('cd-jenkins-slave') {
+    node('mangy-eel-jenkins-slave') {
          container('jnlp')
      {
      

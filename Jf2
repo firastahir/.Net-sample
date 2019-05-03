@@ -1,7 +1,7 @@
 pipeline {
   agent {
     kubernetes {
-      label 'mypod'
+      label 'mangy-eel-jenkins-slave'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1

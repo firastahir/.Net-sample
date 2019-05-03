@@ -1,12 +1,7 @@
-//def project = 'REPLACE_WITH_YOUR_PROJECT_ID'
-//def  appName = 'gceme'
-//def  feSvcName = "${appName}-frontend"
-//def  imageTag = "gcr.io/${project}/${appName}:${env.BRANCH_NAME}.${env.BUILD_NUMBER}"
-
 pipeline {
   agent {
     kubernetes {
-      label 'sample-app'
+      label 'mangy-eel-jenkins-slave'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1
@@ -23,11 +18,6 @@ spec:
     command:
     - cat
     tty: true
-//  - name: gcloud
-//    image: gcr.io/cloud-builders/gcloud
-//    command:
-//    - cat
-//    tty: true
   - name: kubectl
     image: gcr.io/cloud-builders/kubectl
     command:

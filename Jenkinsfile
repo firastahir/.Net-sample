@@ -1,7 +1,7 @@
 node {
     podTemplate(){
     node('mangy-eel-jenkins-slave') {
-         container('jnlp')
+         container('dind')
      {
      
     // stage('Install custom softwares') {

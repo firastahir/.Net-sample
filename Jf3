@@ -1,8 +1,8 @@
 pipeline {
   agent {
     kubernetes {
-      label 'mangy-eel-jenkins-slave-1'
-      defaultContainer 'jnlp'
+      label 'mangy-eel-jenkins-slave'
+      defaultContainer 'jnlp-2'
       yaml """
 apiVersion: v1
 kind: Pod

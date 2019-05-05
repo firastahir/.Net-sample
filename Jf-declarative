@@ -55,5 +55,41 @@ spec:
         }
       }
     }
+    stage('SCM') {
+               checkout scm       
+               }
+        
+         stage('Go version') {
+      
+            container('golang') {
+               sh """
+                 go version
+                 """
+             }      
+           }
+        stage('Maven') {
+            
+                container('maven') {
+                    sh 'mvn --version'
+                   
+                }
+            
+        }
+         stage('Mongo') {
+            
+                container('mongo') {
+                    sh 'mongod --version'
+                   
+                }
+             
+        }
+         stage('Docker build') {
+            
+                container('dind') {
+                    sh 'docker build -t myimage:v1 .'
+                   
+                }
+             
+        }
   }
 }

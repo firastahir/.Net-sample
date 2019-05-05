@@ -23,16 +23,16 @@ spec:
     command:
     - cat
     tty: true
-   - name: dind
-     image: docker:18.05-dind
-     securityContext:
-       privileged: true
-      volumeMounts:
-        - name: dind-storage
-          mountPath: /var/lib/docker
-     volumes:
-       - name: dind-storage
-         emptyDir: {}
+  - name: dind
+    image: docker:18.05-dind
+    securityContext:
+      privileged: true
+    volumeMounts:
+      - name: dind-storage
+        mountPath: /var/lib/docker
+   volumes:
+      - name: dind-storage
+        emptyDir: {}
 """
   ) {
 

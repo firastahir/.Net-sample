@@ -82,11 +82,10 @@ spec:
                 }
              }
         }
-       stage('Docker Build, Push'){
+       stage('Docker Publish'){
            steps {
                 container('dind') {
            withDockerRegistry([credentialsId: "dockerhub", url: 'https://index.docker.io/v1/']) {
-           //sh "docker build -t ${ImageName}:${imageTag} ."
            sh "docker push firas80/asp-net:v1"
            }
       }

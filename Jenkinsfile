@@ -12,6 +12,10 @@ spec:
     image: maven:3.3.9-jdk-8-alpine
     command: ['cat']
     tty: true
+  - name: docker
+    image: docker
+    command: ['cat']
+    tty: true
   - name: mongo
     image: mongo
   - name: golang
@@ -48,6 +52,14 @@ spec:
             
                 container('mongo') {
                     sh 'mongod --version'
+                   
+                }
+             
+        }
+         stage('Docker build') {
+            
+                container('docker') {
+                    sh 'docker build -t myimage:v1 .'
                    
                 }
              

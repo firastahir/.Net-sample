@@ -82,5 +82,15 @@ spec:
                 }
              }
         }
+       stage('Docker Build, Push'){
+           steps {
+                container('dind') {
+           withDockerRegistry([credentialsId: "dockerhub", url: 'https://index.docker.io/v1/']) {
+           //sh "docker build -t ${ImageName}:${imageTag} ."
+           sh "docker push ${ImageName}"
+           }
+      }
+           }
+       }
   }
 }

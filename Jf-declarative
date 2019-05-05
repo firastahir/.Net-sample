@@ -44,6 +44,9 @@ spec:
 """
     }
   }
+  node {
+               checkout scm       
+       }
   stages {
     stage('Run maven') {
       steps {
@@ -54,11 +57,7 @@ spec:
           sh '/bin/busybox'
         }
       }
-    }
-    stage('SCM') {
-               checkout scm       
-               }
-        
+    }    
          stage('Go version') {
            steps {      
             container('golang') {

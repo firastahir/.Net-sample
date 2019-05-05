@@ -44,9 +44,7 @@ spec:
 """
     }
   }
-  node {
-               checkout scm       
-       }
+  
   stages {
     stage('Run maven') {
       steps {
@@ -78,6 +76,7 @@ spec:
         }
          stage('Docker build') {
             steps {
+                checkout scm
                 container('dind') {
                     sh 'docker build -t myimage:v1 .'
                    

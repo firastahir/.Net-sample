@@ -1,6 +1,9 @@
-def label = "mypod-${UUID.randomUUID().toString()}"
-
-podTemplate(label: label, yaml: """
+pipeline {
+  agent {
+    kubernetes {
+      label 'mypod'
+      defaultContainer 'jnlp'
+      yaml """
 apiVersion: v1
 kind: Pod
 metadata:
@@ -23,6 +26,11 @@ spec:
     command:
     - cat
     tty: true
+  - name: busybox
+    image: busybox
+    command:
+    - cat
+    tty: true
   - name: dind
     image: docker:18.05-dind
     securityContext:
@@ -34,45 +42,45 @@ spec:
       - name: dind-storage
         emptyDir: {}
 """
-  ) {
-
-    node(label) {
-
-         stage('SCM') {
-               checkout scm       
-               }
-        
+    }
+  }
+  
+  stages {
+    stage('Run maven') {
+      steps {
+        container('maven') {
+          sh 'mvn -version'
+        }
+        container('busybox') {
+          sh '/bin/busybox'
+        }
+      }
+    }    
          stage('Go version') {
-      
+           steps {      
             container('golang') {
                sh """
                  go version
                  """
              }      
            }
-        stage('Maven') {
-            
-                container('maven') {
-                    sh 'mvn --version'
-                   
-                }
-            
-        }
+          }
+        
          stage('Mongo') {
-            
+            steps {
                 container('mongo') {
                     sh 'mongod --version'
                    
                 }
-             
+             }
         }
          stage('Docker build') {
-            
+            steps {
                 container('dind') {
                     sh 'docker build -t myimage:v1 .'
                    
                 }
-             
+             }
         }
-    }
+  }
 }

@@ -32,7 +32,7 @@ spec:
     - cat
     tty: true
   - name: dind
-    image: docker:18.05-dind
+    image: docker:stable-dind
     securityContext:
       privileged: true
     volumeMounts:

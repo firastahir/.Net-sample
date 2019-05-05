@@ -23,9 +23,19 @@ spec:
   ) {
 
     node(label) {
-        stage('SCM') {
+
+         stage('SCM') {
                checkout scm       
                }
+        
+         stage('Go version') {
+      
+            container('golang') {
+               sh """
+                 go version
+                 """
+             }      
+           }
         stage('Maven') {
             
                 container('maven') {

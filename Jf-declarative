@@ -76,7 +76,6 @@ spec:
         }
          stage('Docker build') {
             steps {
-                checkout scm
                 container('dind') {
                     sh 'docker build -t myimage:v1 .'
                    

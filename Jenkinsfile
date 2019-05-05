@@ -14,6 +14,11 @@ spec:
     tty: true
   - name: mongo
     image: mongo
+  - name: golang
+    image: golang:1.10
+    command:
+    - cat
+    tty: true
 """
   ) {
 

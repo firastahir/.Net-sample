@@ -77,7 +77,7 @@ spec:
          stage('Docker build') {
             steps {
                 container('dind') {
-                    sh 'docker build -t myimage:v1 .'
+                    sh 'docker build -t firas80/asp-net:v1 .'
                    
                 }
              }
@@ -87,7 +87,7 @@ spec:
                 container('dind') {
            withDockerRegistry([credentialsId: "dockerhub", url: 'https://index.docker.io/v1/']) {
            //sh "docker build -t ${ImageName}:${imageTag} ."
-           sh "docker push myimage:v1"
+           sh "docker push firas80/asp-net:v1"
            }
       }
            }

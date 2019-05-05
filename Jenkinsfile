@@ -1,7 +1,8 @@
+def label = "mypod-${UUID.randomUUID().toString()}"
 pipeline {
   agent {
     kubernetes {
-      label 'mypod'
+      label 'label'
       defaultContainer 'jnlp'
       yaml """
 apiVersion: v1

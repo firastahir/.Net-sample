@@ -18,6 +18,9 @@ spec:
   ) {
 
     node(label) {
+        stage('SCM') {
+               checkout scm       
+               }
         stage('Maven') {
             
                 container('maven') {

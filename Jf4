@@ -14,7 +14,7 @@ pipeline {
       steps {
         container('docker') {
           // Change deployed image in canary to the one we just built
-  //        sh("docker build -t myimage:v1 .")
+         sh("docker build -t myimage:v1 .")
           
    
         } 

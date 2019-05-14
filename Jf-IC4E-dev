@@ -1,0 +1,58 @@
+node {
+   properties([
+    [$class: 'BuildDiscarderProperty',
+      strategy: [$class: 'LogRotator',
+        artifactDaysToKeepStr: '5',
+        artifactNumToKeepStr: '5',
+        daysToKeepStr: '5',
+        numToKeepStr: '5']
+    ]
+   ])
+   
+   podTemplate(){
+    node('pod-dind') {
+        container('jnlp-custom-one')
+	{
+	sh "openssl s_client -showcerts -connect artifactory.ameren.com:443 </dev/null 2>/dev/null|openssl x509 -outform PEM > $WORKSPACE/artifactory.pem"
+        }
+	container('centos') {
+	def mvnHome
+	  jdk = tool name: 'JDK-Tool'
+          env.JAVA_HOME = "${jdk}"
+          sh "${jdk}/bin/java -version"
+   
+   	stage('Prepare') {
+    	mvnHome = tool 'maven-3.5.4'     
+	sh "cd ${jdk}"
+	sh "curl -O https://confluence.atlassian.com/kb/files/779355358/779355357/1/1441897666313/SSLPoke.class"
+	sh "cd $JAVA_HOME/jre/lib/security && chmod +x cacerts"
+
+        sh "$jdk/bin/keytool -noprompt -storepass changeit -trustcacerts -importcert -alias artifactory -file $WORKSPACE/artifactory.pem -keystore $JAVA_HOME/jre/lib/security/cacerts"
+        sh "${jdk}/bin/java SSLPoke artifactory.ameren.com 443"
+   	checkout scm
+	}
+   
+   	stage('Build'){
+    	configFileProvider(
+        	[configFile(fileId: '8c8759ed-5b07-4823-9061-ceac68f26ea1', variable: 'MAVEN_SETTINGS')]) {
+        		sh "'${mvnHome}/bin/mvn' -s $MAVEN_SETTINGS clean package -Denv=DEV -Dversion=1.0.${env.BUILD_ID} -DskipMunitTests"
+	               	}
+   	}
+	stage('Deploy to Dev environment'){
+		def usernameLocal, passwordLocal
+	  	withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'anypoint-mule', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME']]) {
+	        usernameLocal = env.USERNAME
+	        passwordLocal = env.PASSWORD
+		
+	    
+	  	configFileProvider(
+	        [configFile(fileId: '8c8759ed-5b07-4823-9061-ceac68f26ea1', variable: 'MAVEN_SETTINGS')]){
+		    sh "'${mvnHome}/bin/mvn' -s $MAVEN_SETTINGS clean package org.mule.tools.maven:mule-maven-plugin:deploy -DskipMunitTests -Denv=DEV -Dversion=1.0.${env.BUILD_ID} -Duser=${usernameLocal} -Dpassword=${passwordLocal}"
+
+		    }  
+		}
+	}
+}
+}
+}
+}

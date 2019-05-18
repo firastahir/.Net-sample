@@ -1,0 +1,44 @@
+pipeline {
+  agent {
+    kubernetes {
+      label 'mypod'
+      yaml """
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: MAT-dev
+spec:
+  containers:
+  - name: awscli
+    image: alpine:3.8
+    command:
+    - cat
+    tty: true
+"""
+    }
+  }
+  
+  stages { 
+         stage('Prepare') {
+            steps {
+		            container('awscli') {
+			    sh 'apk --no-cache update && \
+                                apk --no-cache add bash  python py-pip py-setuptools ca-certificates curl groff less && \
+                                pip --no-cache-dir install awscli && \
+                                rm -rf /var/cache/apk/*'
+			  }
+             }
+        }
+	 stage('Running AWS commands') {
+            steps {
+		            container('awscli') {
+			   // withCredentials(bindings: [string(credentialsId: 'ece_aee_cicd_srvc_acct')]) {
+			    withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'ece_aee_cicd_srvc_acct']]) {
+		            sh 'aws s3 ls'
+			  }
+			  }
+             }
+        }
+           }
+       }

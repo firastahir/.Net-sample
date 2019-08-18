@@ -1,30 +1,29 @@
-#!/usr/bin/env groovy
 
 node {
-    
-    // Cleanup workspace
-    deleteDir()
-    
-    //Clone example project from GitHub repository
-    //git url: 'https://github.com/jfrogtraining/kubernetes_example.git', branch: 'master'
-    def rtServer = Artifactory.server SERVER_ID
-    def rtDocker = Artifactory.docker server: rtServer
-    def buildInfo = Artifactory.newBuildInfo()
-    def tagDockerApp
-
-    buildInfo.env.capture = true
-
-    //Build docker image named docker-app
-    stage ('Build & Deploy') {
-        dir ('docker-app') {
-            sh "sed -i 's/docker.artifactory/${ARTDOCKER_REGISTRY}/' Dockerfile"
-            tagDockerApp = "${ARTDOCKER_REGISTRY}/docker-app:${env.BUILD_NUMBER}"
-            println "Docker App Build"
-            docker.build(tagDockerApp)
-            println "Docker push" + tagDockerApp + " : " + REPO
-            buildInfo = rtDocker.push(tagDockerApp, REPO, buildInfo)
-            println "Docker Buildinfo"
-            rtServer.publishBuildInfo buildInfo
+     podTemplate(){
+    node('pod-custom') {
+    container('dind') {
+      stage('Prepare') {
+        def usernameLocal, passwordLocal
+	  	withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'art', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME']]) {
+	    usernameLocal = env.USERNAME
+	    passwordLocal = env.PASSWORD
+	    }
+       stage ('Checkout SCM') {
+	  checkout scm
+	  }
+       stage ('Docker Login') { 
+          sh "docker login -u ${usernameLocal} -p ${passwordLocal} art-1"
+          sh "docker login -u ${usernameLocal} -p ${passwordLocal} art-1"
+	  }
+        stage ('Docker build & tag') {
+          sh "docker build -t art-1/curl:v_${env.BUILD_NUMBER} ."
+	  }
+	stage ('Docker publish to Artifactory') {
+          sh "docker push art-1/curl:v_${env.BUILD_NUMBER}"
+	  }
+	  	}
         }
+    }
      }
 }

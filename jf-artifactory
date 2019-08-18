@@ -2,7 +2,7 @@
 node {
      podTemplate(){
     //node('pod-custom') {
-    container('dind') {
+   // container('dind') {
       stage('Prepare') {
         def usernameLocal, passwordLocal
 	  	withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'art', passwordVariable: 'PASSWORD', usernameVariable: 'USERNAME']]) {
@@ -24,6 +24,6 @@ node {
 	  }
 	  	}
         }
-    }
+    //}
   //   }
 }

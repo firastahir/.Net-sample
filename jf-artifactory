@@ -1,7 +1,7 @@
 
 node {
      podTemplate(){
-    node('pod-custom') {
+    //node('pod-custom') {
     container('dind') {
       stage('Prepare') {
         def usernameLocal, passwordLocal
@@ -25,5 +25,5 @@ node {
 	  	}
         }
     }
-     }
+  //   }
 }
